@@ -1,16 +1,12 @@
-#  什么是Docker
+#  Docker学习
 
-## docker 背景
+## 一、为什么要使用docker
 
-目前的后端在开发和运维阶段确实需要一种虚拟化技术解决开发环境和生产环境不一致的问题，通过 Docker 我们可以将程序运行的环境也纳入到版本控制中，排除因为环境造成不同运行结果的可能。
-
-**Docker** 使用 `Google` 公司推出的 [Go 语言](https://golang.org/) 进行开发实现，基于 `Linux` 内核的 [cgroup](https://zh.wikipedia.org/wiki/Cgroups)，[namespace](https://en.wikipedia.org/wiki/Linux_namespaces)，以及 [AUFS](https://en.wikipedia.org/wiki/Aufs) 类的 [Union FS](https://en.wikipedia.org/wiki/Union_mount) 等技术，对进程进行封装隔离，属于 [操作系统层面的虚拟化技术](https://en.wikipedia.org/wiki/Operating-system-level_virtualization)。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。
-
-
-
-## 什么是docker
-
-docker是开源的应用容器引擎，可以让开发者打包他们的应用以及依赖包到他们的容器中，然后发布到任何流行的Linux机器上。也可以实现虚拟化。
+1. 更高效的利用系统资源
+2. 更快的启动速度
+3. 一致的运行环境
+4. 持续交付和部署
+5. 更轻松的迁移、维护和扩展
 
 **docker的优点**
 
@@ -24,7 +20,7 @@ docker是开源的应用容器引擎，可以让开发者打包他们的应用�
 
 虚拟机：虚拟机在本质上就是在模拟一台真实的计算机设备，每个虚拟机都包括应用程序、必要的二进制文件和库以及一个完整的客户操作系统(Guest OS)，尽管它们被分离，它们共享并利用主机的硬件资源，将近需要十几个 GB 的大小。虚拟机架构如下图所示：
 
-![](./虚拟机1.png)
+![](./png/虚拟机1.png)
 
 docker：容器包括应用程序及其所有的依赖，但与其他容器共享内核。它们以独立的用户空间进程形式运行在主机操作系统上。docker架构如下图所示：
 
@@ -62,7 +58,9 @@ Docker Client是我们作为最终用户的通信对象。我们可以将其视�
 
 Docker 使用客户端-服务器 (C/S) 架构模式，使用远程API来管理和创建Docker容器。Docker 容器通过 Docker 镜像来创建。
 
-![](./docker架构.png)
+
+
+![](./png/docker架构.png)
 
 **专有名词**
 
@@ -104,7 +102,7 @@ Docker 使用客户端-服务器 (C/S) 架构模式，使用远程API来管理�
 
 ### 镜像
 
-docker镜像就相当于一个root文件系统。比如官方镜像`ubuntu:18.04`就包含了完整的一套Ubuntu18.04最小系统的root文件系统。
+docker镜像是一个特殊的文件系统
 
 镜像构建时，会一层层构建，前一层是后一层的基础。每一层构建完就不会再发生改变，后一层上的任何改变只发生在自己这一层。
 
