@@ -74,19 +74,29 @@
 
    ​         docker cp container:/$dir/$filename /$目录/
    
-2. 删除所有容器：docker container  rm -f \`docker ps -aq\` （-f：强制删除在运行中的容器）
-
-3. docker run：
+2. docker run：
 
    > docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
    >
    > options如下：
    >
    > * -d：后台运行，返回容器id
-   >
-   > * -it：以交互模式运行容器，并分配一个伪终端
+   >* -it：以交互模式运行容器，并分配一个伪终端
    > * --name：为容器指定名称
    > * -h：指定容器主机名
    > * -P：将容器保留的端口随机映射到主机端口上
    > * -p：指定容器端口到主机端口的映射关系
 
+3. 容器查看和删除
+
+   >  查看：docker ps -aq
+   >
+   > 停止：docker stop $(docker ps -aq)
+   >
+   > 删除：docker rm $(docker ps -aq)
+
+4. 镜像查看和删除
+
+   > 查看：docker image ps -a
+   >
+   > 删除：docker rmi $(docker images -q)
